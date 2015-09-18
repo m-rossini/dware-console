@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <extend>${user.home}/project-default.xml</extend>
+
+  <pomVersion>3</pomVersion>
+
+  <id>dware-console-hibernate</id>
+  <groupId>auster</groupId>
+  <name>DataAWare Web Portal Hibernate Archives</name>
+  <currentVersion>2.5.0</currentVersion>
+
+  <dependencies>
+    <dependency>
+      <artifactId>user-base</artifactId>
+      <groupId>auster</groupId>
+      <version>1.2.0</version>
+      <properties>
+        <har.src>true</har.src>
+      </properties>
+    </dependency>
+    <dependency>
+      <artifactId>request-base</artifactId>
+      <groupId>auster</groupId>
+      <version>1.1.0</version>
+      <properties>
+        <har.src>true</har.src>
+      </properties>
+    </dependency>
+    <dependency>
+      <artifactId>web-request</artifactId>
+      <groupId>auster</groupId>
+      <version>1.1.0</version>
+      <properties>
+        <har.src>true</har.src>
+      </properties>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <sourceDirectory>src/java</sourceDirectory>
+  </build>
+</project>

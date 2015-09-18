@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+
+<struts-config>
+
+	<form-beans>
+
+    	<!-- Logon form bean -->
+		<form-bean	name="loginForm"
+        	        type="br.com.auster.dware.console.login.LoginForm">
+    	</form-bean>
+
+        <form-bean  name="accountListForm"
+                type="org.apache.struts.action.DynaActionForm">
+        		<form-property name="requestId" type="java.lang.String"/>
+        </form-bean>
+
+		<!-- request display -->
+        <form-bean  name="requestDetailsForm"
+                    type="org.apache.struts.action.DynaActionForm">
+            <form-property name="requestId" type="java.lang.Long"/>
+            <form-property name="accountId" type="java.lang.Long"/>
+        </form-bean>
+
+		<!-- delete request -->
+        <form-bean  name="deleteRequestForm"
+                    type="org.apache.struts.action.DynaActionForm">
+            <form-property name="reqId" type="java.lang.Long"/>
+        </form-bean>
+
+                    <!-- remake reports -->
+        <form-bean  name="remakeReportsForm"
+                    type="org.apache.struts.action.DynaActionForm">
+            <form-property name="reqIdReport" type="java.lang.Long"/>
+        </form-bean>
+
+		<!-- create request -->
+		<form-bean	name="uploadFileForm"
+				type="br.com.auster.dware.console.request.UploadForm">
+		</form-bean>
+
+		<form-bean	name="newGroupForm"
+				type="br.com.auster.dware.console.user.CreateGroupForm">
+		</form-bean>
+
+
+        <form-bean	name="showAccountsForm"
+                    type="org.apache.struts.action.DynaActionForm">
+                <form-property name="displayedAccount" type="java.lang.String[]"/>
+                <form-property name="selectedAccount" type="java.lang.String[]"/>
+        </form-bean>
+
+        <form-bean	name="formatOptionsForm"
+                    type="org.apache.struts.action.DynaActionForm">
+                <form-property name="format" type="java.lang.String[]"/>
+        </form-bean>
+
+
+        <form-bean	name="emailAddressForm"
+                    type="org.apache.struts.action.DynaActionForm">
+                <form-property name="emailAddress" type="java.lang.String"/>
+                <form-property name="sendEmail" type="java.lang.Boolean"/>
+        </form-bean>
+
+		<!-- user management -->
+		<form-bean      name="newUserForm"
+                        type="br.com.auster.dware.console.user.CreateUserForm">
+        </form-bean>
+
+		<form-bean	name="updateUserForm"
+        	        type="br.com.auster.dware.console.user.UpdateUserForm">
+    	</form-bean>
+
+		<form-bean	name="changeUserPasswordForm"
+        	        type="br.com.auster.dware.console.user.UpdateUserForm">
+    	</form-bean>
+
+    	<form-bean name="lockUserForm"
+                    type="org.apache.struts.action.DynaActionForm">
+                <form-property name="login" type="java.lang.String"/>
+    	</form-bean>
+
+    	<form-bean name="unlockUserForm"
+                    type="org.apache.struts.action.DynaActionForm">
+                <form-property name="login" type="java.lang.String"/>
+    	</form-bean>
+
+		<form-bean	name="updateGroupForm"
+	       	        type="br.com.auster.dware.console.user.UpdateGroupForm">
+    	</form-bean>
+
+		<form-bean name="updateGroupStatusForm"
+	       	        type="br.com.auster.dware.console.user.UpdateGroupForm">
+    	</form-bean>
+
+		<!-- interactive queries -->
+    	<form-bean name="selectFieldsForm"
+                    type="org.apache.struts.action.DynaActionForm">
+                <form-property name="table" type="java.lang.String"/>
+    	</form-bean>
+
+    	<form-bean name="selectConditionsForm"
+                    type="org.apache.struts.action.DynaActionForm">
+                <form-property name="table"      type="java.lang.String"/>
+				<form-property name="queryField" type="java.lang.String[]"/>
+				<form-property name="runNow"     type="java.lang.String"/>
+    	</form-bean>
+
+    	<form-bean name="selectOrderByForm"
+                    type="org.apache.struts.action.DynaActionForm">
+                <form-property name="table" type="java.lang.String"/>
+				<form-property name="queryField" type="java.lang.String[]"/>
+				<form-property name="queryCondition" type="java.lang.String[]"/>
+				<form-property name="runNow"     type="java.lang.String"/>
+    	</form-bean>
+
+    	<form-bean name="executeQueryForm"
+                    type="org.apache.struts.action.DynaActionForm">
+                <form-property name="table" type="java.lang.String"/>
+				<form-property name="queryField" type="java.lang.String[]"/>
+				<form-property name="queryCondition" type="java.lang.String[]"/>
+				<form-property name="orderField" type="java.lang.String[]"/>
+    	</form-bean>
+		<form-bean name="carrierForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="carrier" type="java.lang.String"/>
+			<form-property name="code"    type="java.lang.String"/>
+			<form-property name="state"   type="java.lang.String"/>
+			<form-property name="id"      type="java.lang.Long"/>
+<!--
+			<form-property name="custom1" type="java.lang.String"/>
+			<form-property name="custom2" type="java.lang.String"/>
+			<form-property name="custom3" type="java.lang.String"/>
+-->
+		</form-bean>
+		<form-bean name="carrierDataForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="carrierUid"           type="java.lang.Long"/>
+			<form-property name="carrierCode"          type="java.lang.String"/>
+			<form-property name="carrierState"         type="java.lang.String"/>
+			<form-property name="carrierCompany"       type="java.lang.String"/>
+			<form-property name="uid"                  type="java.lang.Long"/>
+			<form-property name="fullName"             type="java.lang.String"/>
+			<form-property name="taxId"                type="java.lang.String"/>
+			<form-property name="stateEnrollNumber"    type="java.lang.String"/>
+			<form-property name="cityEnrollNumber"     type="java.lang.String"/>
+			<form-property name="addressStreet"        type="java.lang.String"/>
+			<form-property name="addressNumber"        type="java.lang.String"/>
+			<form-property name="addressComplement"    type="java.lang.String"/>
+			<form-property name="addressZip"           type="java.lang.String"/>
+			<form-property name="addressCity"          type="java.lang.String"/>
+			<form-property name="addressWeb"           type="java.lang.String"/>
+			<form-property name="addressEmail"         type="java.lang.String"/>
+			<!-- LD attributes -->
+			<form-property name="ldFullName"           type="java.lang.String"/>
+			<form-property name="ldTaxId"              type="java.lang.String"/>
+			<form-property name="ldStateEnrollNumber"  type="java.lang.String"/>
+			<form-property name="ldCityEnrollNumber"   type="java.lang.String"/>
+			<form-property name="ldAddressStreet"      type="java.lang.String"/>
+			<form-property name="ldAddressNumber"      type="java.lang.String"/>
+			<form-property name="ldAddressComplement"  type="java.lang.String"/>
+			<form-property name="ldAddressZip"         type="java.lang.String"/>
+			<form-property name="ldAddressCity"        type="java.lang.String"/>
+			<form-property name="ldAddressWeb"         type="java.lang.String"/>
+			<form-property name="ldAddressEmail"       type="java.lang.String"/>
+<!--
+			<form-property name="custom1"              type="java.lang.String"/>
+			<form-property name="custom2"              type="java.lang.String"/>
+			<form-property name="custom3"              type="java.lang.String"/>
+-->
+		</form-bean>
+		<form-bean name="cycleDatesForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="uid"           type="java.lang.Long"/>
+			<form-property name="cycleCode"     type="java.lang.String"/>
+			<form-property name="startDate"     type="java.lang.String"/>
+			<form-property name="endDate"       type="java.lang.String"/>
+			<form-property name="issueDate"     type="java.lang.String"/>
+			<form-property name="referenceDate" type="java.lang.String"/>
+			<form-property name="dueDate"       type="java.lang.String"/>
+			<form-property name="customerType"  type="java.lang.Long"/>
+			<form-property name="offsetDays"    type="java.lang.Integer"/>
+<!--
+			<form-property name="custom1"              type="java.lang.String"/>
+			<form-property name="custom2"              type="java.lang.String"/>
+			<form-property name="custom3"              type="java.lang.String"/>
+-->
+		</form-bean>
+		<form-bean name="customerTypeForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="uid"             type="java.lang.Long"/>
+			<form-property name="customerType"    type="java.lang.String"/>
+			<form-property name="typeDescription" type="java.lang.String"/>
+<!--
+			<form-property name="custom1" type="java.lang.String"/>
+			<form-property name="custom2" type="java.lang.String"/>
+			<form-property name="custom3" type="java.lang.String"/>
+-->
+		</form-bean>
+		<form-bean name="invoiceForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="uid"          type="java.lang.Long"/>
+			<form-property name="customerType" type="java.lang.Long"/>
+			<form-property name="UF"           type="java.lang.Long"/>
+			<form-property name="upperAmount"  type="java.lang.String"/>
+			<form-property name="lowerAmount"  type="java.lang.String"/>
+			<form-property name="hintMessage"  type="java.lang.String"/>
+<!--
+			<form-property name="custom1" type="java.lang.String"/>
+			<form-property name="custom2" type="java.lang.String"/>
+			<form-property name="custom3" type="java.lang.String"/>
+-->
+		</form-bean>
+		<!-- Threholds actions -->
+		<form-bean name="updateNFThresholdsForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="localUpperAmount"       type="java.lang.String"/>
+			<form-property name="localLowerAmount"       type="java.lang.String"/>
+			<form-property name="localMessage"           type="java.lang.String"/>
+			<form-property name="ldUpperAmount"          type="java.lang.String"/>
+			<form-property name="ldLowerAmount"          type="java.lang.String"/>
+			<form-property name="ldMessage"              type="java.lang.String"/>
+		</form-bean>
+
+		<!-- OCCThreholds actions -->
+		<form-bean name="occForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="carrier"          type="java.lang.Long"/>
+			<form-property name="upperAmount"      type="java.lang.String"/>
+			<form-property name="lowerAmount"      type="java.lang.String"/>
+			<form-property name="message"          type="java.lang.String"/>
+		</form-bean>
+
+		<!-- UsageThreholds actions -->
+		<form-bean name="usageForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="carrier"          type="java.lang.Long"/>
+			<form-property name="upperAmount"      type="java.lang.Double"/>
+			<form-property name="lowerAmount"      type="java.lang.Double"/>
+			<form-property name="message"          type="java.lang.String"/>
+		</form-bean>
+	</form-beans>
+	<global-exceptions>
+		<exception
+			key="erro"
+			type="java.lang.Exception"
+			path="error.jsp"/>
+		<exception
+			type="java.lang.Exception"
+ 			key="errors"
+			path="/erro.do" />
+    	<exception 	key="asp.exception"
+					type="java.lang.Exception"
+					handler="br.com.auster.dware.console.error.GeneralExceptionHandler"
+					path="/error.jsp"/>
+	</global-exceptions>
+  	<global-forwards>
+		<forward
+			name="error"
+			path="/error.jsp"/>
+	</global-forwards>
+	<action-mappings>
+<action path="/erro">
+			<forward
+				name="erro"
+				path="/error.jsp"/>
+		</action>
+
+		<!--                         -->
+		<!-- Process a user logon    -->
+		<!--                         -->
+    	<action    path="/login"
+        	       type="br.com.auster.dware.console.login.LoginAction"
+            	   name="loginForm"
+	              scope="request"
+    	          input="loginPage">
+	    	<forward   	name="error"  			path="/error.jsp"/>
+	    	<forward   	name="user-validated"	path="/list-requests.do"/>
+    	</action>
+
+    	<action    path="/logout"
+        	       type="br.com.auster.dware.console.login.LogoutAction"
+	              scope="request">
+                <forward        name="login"    path="/login/login.jsp"/>
+    	</action>
+
+
+        <action    path="/errorPage"
+                   type="br.com.auster.dware.console.error.ErrorAction"
+                   scope="request">
+                <forward        name="error"    path="/error.jsp"/>
+                <forward        name="login"    path="/login/login.jsp"/>
+        </action>
+
+		<!--                            -->
+		<!--   Request display pages    -->
+		<!--                            -->
+
+        <action    path="/list-requests"
+                   type="br.com.auster.dware.console.request.ListRequestsAction"
+                   scope="request">
+                <forward   	name="error"  	      path="/error.jsp"/>
+                <forward        name="list-requests"    path="/requests/list.jsp"/>
+        </action>
+
+        <action    path="/show-request-bundles"
+                   name="accountListForm"
+                   type="br.com.auster.dware.console.request.ListRequestBundlesAction"
+                   scope="request"
+                   input="list.jsp">
+                <forward        name="list-request-bundles" path="/requests/listRequestBundles.jsp"/>
+        </action>
+
+        <action    path="/show-request-accounts"
+                   name="accountListForm"
+                   type="br.com.auster.dware.console.request.ListRequestAccountsAction"
+                   scope="request"
+                   input="list.jsp">
+                <forward        name="list-request-accounts" path="/requests/listRequestAccounts.jsp"/>
+        </action>
+
+        <action    path="/show-request-details"
+                   name="requestDetailsForm"
+                   type="br.com.auster.dware.console.request.ListSingleRequestDetailsAction"
+                   scope="request"
+                   input="listRequestAccounts.jsp">
+                <forward        name="show-details"     path="/requests/requestDetails.jsp"/>
+        </action>
+        <action    path="/delete-request"
+                   name="deleteRequestForm"
+                   type="br.com.auster.dware.console.request.DeleteRequestAction"
+                   scope="request">
+                <forward  name="error"  	     path="/error.jsp"/>
+                <forward  name="list-request" path="/list-requests.do"/>
+        </action>
+
+        <action    path="/remake-reports"
+                   name="remakeReportsForm"
+                   type="br.com.auster.dware.console.request.RemakeReportsAction"
+                   scope="request">
+                <forward  name="error"           path="/error.jsp"/>
+                <forward  name="list-request" path="/list-requests.do"/>
+        </action>
+
+       <action     path="/download-file"
+                   type="br.com.auster.dware.console.request.FileDownloadAction"
+                   scope="request">
+	  	<forward name="list-requests" path="/list-requests.do"/>
+                    <forward  name="error"  path="/error.jsp"/>
+        </action>
+
+
+		<!--                            -->
+		<!--  Process request creation  -->
+		<!--                            -->
+
+		<action    path="/upload-file"
+		           type="br.com.auster.dware.console.request.UploadFileAction"
+		           name="uploadFileForm"
+		           scope="request">
+		        <forward        name="parse-accounts"       path="/parse-accounts.do"/>
+		</action>
+
+
+        <action    path="/parse-accounts"
+                   type="br.com.auster.dware.console.vivo.web.ParseUploadedSirsAction"
+                   scope="request">
+               <forward        name="show-accounts" path="/show-accounts.do"/>
+        </action>
+
+        <action    path="/show-accounts"
+                   type="br.com.auster.dware.console.request.SelectAccountsAction"
+				   name="showAccountsForm"
+                   scope="request">
+               <forward        name="show-accounts" path="/requests/selectAccounts.jsp"/>
+               <forward        name="save-accounts" path="/save-account-selection.do"/>
+        </action>
+
+        <action    path="/clear-account-selection"
+                   type="br.com.auster.dware.console.request.ClearAccountsSelectionAction"
+                   scope="request">
+               <forward        name="show-accounts" path="/requests/selectAccounts.jsp"/>
+        </action>
+
+        <action    path="/select-all-accounts"
+                   type="br.com.auster.dware.console.request.MarkAllAccountsAsSelectedAction"
+                   scope="request">
+               <forward        name="show-accounts" path="/show-accounts.do"/>
+               <forward        name="save-accounts" path="/save-account-selection.do"/>
+        </action>
+
+        <action    path="/save-account-selection"
+                   type="br.com.auster.dware.console.request.SaveAccountsSelectionAction"
+                   scope="request">
+               <forward        name="show-formats" path="/requests/selectFormats.jsp"/>
+			   <forward        name="backTo-show-accounts" path="/show-accounts.do" redirect="true"/>
+        </action>
+
+        <action    path="/select-formats"
+                   type="br.com.auster.dware.console.request.SelectFormatsAction"
+				   name="formatOptionsForm"
+                   scope="request">
+               <forward        name="show-notification" path="/requests/selectEmailNotification.jsp"/>
+        </action>
+
+        <action    path="/select-notification"
+                   type="br.com.auster.dware.console.request.SelectEmailNotificationAction"
+				   name="emailAddressForm"
+                   scope="request">
+               <forward        name="save-request" path="/save-new-request.do"/>
+        </action>
+
+        <action    path="/save-new-request"
+                   type="br.com.auster.dware.console.request.CreateNewRequestAction"
+                   scope="request">
+               <forward        name="request-created" path="/requests/requestCreated.jsp"/>
+        </action>
+
+		<!--                            -->
+		<!-- Process user management    -->
+		<!--                            -->
+
+	   	<action path="/passwordPopup"
+	       		type="br.com.auster.dware.console.user.ChangePasswordAction"
+	       		name="changeUserPasswordForm"
+	    		scope="request">
+			<forward name="success" path="/login/success-popup.jsp"/>
+			<forward name="error" path="/login/error-popup.jsp"/>
+    	</action>
+
+    	<action    path="/list-users"
+        	       type="br.com.auster.dware.console.user.ListUsersAction"
+	               scope="request">
+			<forward   	name="show-users"	path="/users/listUsers.jsp"/>
+    	</action>
+
+		<action   path="/display-new-user"
+        	       type="br.com.auster.dware.console.user.LoadPermissionGroupsAction"
+	               scope="request"
+	               input="display-page">
+		    <forward name="display-page" path="/users/createUser.jsp"/>
+	    </action>
+
+		<action   path="/list-groups"
+        	       type="br.com.auster.dware.console.user.LoadPermissionGroupsAction"
+	               scope="request"
+	               input="list-users">
+		    <forward name="list-users" path="/list-users.do"/>
+		    <forward name="display-page" path="/users/listGroups.jsp"/>
+	    </action>
+
+    	<action    path="/create-user"
+        	       type="br.com.auster.dware.console.user.CreateUserAction"
+        	       name="newUserForm"
+	               scope="request"
+	               input="create-user-page">
+    		<forward   name="create-user-page"  path="/display-new-user.do"/>
+	    	<forward name="confirm-operation" path="/users/operationExecuted.jsp"/>
+	    	<forward name="back-to-list" path="/list-users.do"/>
+    	</action>
+
+    	<action    path="/create-group"
+        	       type="br.com.auster.dware.console.user.CreateGroupAction"
+        	       name="newGroupForm"
+	               scope="request"
+	               input="create-group-page">
+    		<forward   name="create-group-page"  path="/users/createGroup.jsp"/>
+	    	<forward name="confirm-operation" path="/users/operationExecuted.jsp"/>
+	    	<forward name="back-to-list" path="/list-groups.do"/>
+    	</action>
+
+    	<action    path="/update-user"
+        	       type="br.com.auster.dware.console.user.UpdateUserAction"
+        	       name="updateUserForm"
+	               scope="request"
+	               input="update-user-page">
+    		<forward   name="update-user-page"  path="/users/updateUser.jsp"/>
+	    	<forward name="confirm-operation" path="/users/operationExecuted.jsp"/>
+	    	<forward name="back-to-list" path="/list-users.do"/>
+    	</action>
+
+    	<action    path="/lock-user"
+        	       type="br.com.auster.dware.console.user.LockUserLoginAction"
+        	       name="lockUserForm"
+	               scope="request">
+	    	<forward name="confirm-operation" path="/users/operationExecuted.jsp"/>
+    	</action>
+
+    	<action    path="/unlock-user"
+        	       type="br.com.auster.dware.console.user.UnlockUserLoginAction"
+        	       name="unlockUserForm"
+	               scope="request">
+	    	<forward name="confirm-operation" path="/users/operationExecuted.jsp"/>
+    	</action>
+
+    	<action    path="/update-user-info"
+        	       type="br.com.auster.dware.console.user.LoadUserInfoAction"
+	               scope="request">
+	    	<forward name="display-user-info" path="/users/updateUser.jsp"/>
+	    	<forward name="back-to-list" path="/list-users.do"/>
+    	</action>
+
+		<action   path="/load-group"
+        	       type="br.com.auster.dware.console.user.LoadGroupDetailsAction"
+	               scope="request"
+	               input="list-groups">
+		    <forward name="list-groups" path="/list-groups.do"/>
+		    <forward name="display-page" path="/users/updateGroup.jsp"/>
+	    </action>
+
+    	<action    path="/update-group"
+        	       type="br.com.auster.dware.console.user.UpdateGroupAction"
+				   name="updateGroupForm"
+	               scope="request"
+				   input="/users/updateGroup.jsp">
+	    	<forward name="confirm-operation" path="/users/operationExecuted.jsp"/>
+	    	<forward name="back-to-list" path="/list-groups.do"/>
+    	</action>
+
+    	<action    path="/update-group-status"
+        	       type="br.com.auster.dware.console.user.UpdateGroupStatusAction"
+				   name="updateGroupStatusForm"
+	               scope="request"
+				   input="/users/updateGroup.jsp">
+	    	<forward name="confirm-operation" path="/users/operationExecuted.jsp"/>
+	    	<forward name="back-to-list" path="/list-groups.do"/>
+    	</action>
+
+		<!--                            -->
+		<!-- Interactive Query Module   -->
+		<!--                            -->
+
+    	<action    path="/list-queries"
+        	       type="br.com.auster.dware.console.queries.ListAvailableTablesAction"
+	               scope="request">
+			<forward   	name="show-tables"	path="/queries/listTables.jsp"/>
+    	</action>
+
+    	<action    path="/select-fields"
+        	       type="br.com.auster.dware.console.queries.SelectQueryFieldsAction"
+				   name="selectFieldsForm"
+	               scope="request">
+			<forward   	name="show-fields"	path="/queries/selectFields.jsp"/>
+    	</action>
+
+    	<action    path="/select-conditions"
+        	       type="br.com.auster.dware.console.queries.SelectQueryConditionsAction"
+				   name="selectConditionsForm"
+	               scope="request">
+			<forward   	name="show-conditions"	path="/queries/selectConditions.jsp"/>
+			<forward    name="execute-query"    path="/execute-query.do"/>
+    	</action>
+
+    	<action    path="/select-orderby"
+        	       type="br.com.auster.dware.console.queries.SelectQueryOrderAction"
+				   name="selectOrderByForm"
+	               scope="request">
+			<forward   	name="show-orderBy"	    path="/queries/selectOrderBy.jsp"/>
+			<forward    name="execute-query"    path="/execute-query.do"/>
+    	</action>
+
+    	<action    path="/execute-query"
+        	       type="br.com.auster.dware.console.queries.ExecuteQueryAction"
+				   name="executeQueryForm"
+	               scope="request">
+			<forward   	name="show-results"	path="/display-query.do"/>
+    	</action>
+
+
+    	<action    path="/display-query"
+        	       type="br.com.auster.dware.console.queries.DisplayResultsAction"
+	               scope="request">
+			<forward   	name="show-results"	path="/queries/listResults.jsp"/>
+    	</action>
+		<!--							-->
+		<!-- Process carrier management -->
+		<!--							-->
+		<action
+			path="/carrier"
+			type="br.com.auster.dware.console.carrier.CarrierAction"
+			name="carrierForm"
+			scope="request"
+			parameter="operation"
+			validate="true"
+			input="/carrier/listCarrier.jsp">
+			<forward
+				name="success"
+				path="/carrier/listCarrier.jsp"/>
+			<forward
+				name="detail"
+				path="/carrier/carrierData.jsp"/>
+			<forward
+				name="done"
+				path="/carrier/action-done.jsp"/>
+			<forward
+				name="error"
+				path="/errorPage.do"/>
+		</action>
+		<action
+			path="/detail"
+			name="carrierDataForm"
+			type="br.com.auster.dware.console.carrier.CarrierDataAction"
+			scope="request"
+			parameter="operation"
+			validate="true"
+			input="/carrier/carrierData.jsp">
+			<forward
+				name="success"
+				path="/carrier/carrierData.jsp"/>
+			<forward
+				name="done"
+				path="/carrier/action-done.jsp"/>
+			<forward
+				name="error"
+				path="/errorPage.do"/>
+		</action>
+		<action
+			path="/cycles"
+			type="br.com.auster.dware.console.cycleDates.CycleDatesAction"
+			name="cycleDatesForm"
+			scope="request"
+			parameter="operation"
+			input="/cycleDates/list_cycle_dates.jsp">
+			<forward
+				name="list"
+				path="/cycleDates/list_cycle_dates.jsp"/>
+			<forward
+				name="done"
+				path="/cycleDates/action-done.jsp"/>
+			<forward
+				name="detail"
+				path="/cycleDates/cycle_dates.jsp"/>
+			<forward
+				name="error"
+				path="/errorPage.do"/>
+		</action>
+		<action
+			path="/customer"
+			type="br.com.auster.dware.console.customerType.CustomerTypeAction"
+			name="customerTypeForm"
+			scope="request"
+			parameter="operation"
+			validate="true"
+			input="/customerType/list_customer_type.jsp">
+			<forward
+				name="list"
+				path="/customerType/list_customer_type.jsp"/>
+			<forward
+				name="done"
+				path="/customerType/action-done.jsp"/>
+			<forward
+				name="detail"
+				path="/customerType/customer_type.jsp"/>
+			<forward
+				name="error"
+				path="/errorPage.do"/>
+		</action>
+		<action
+			path="/invoice"
+			type="br.com.auster.dware.console.invoice.InvoiceAction"
+			name="invoiceForm"
+			scope="request"
+			parameter="operation"
+			validate="true"
+			input="/invoice/list_invoice_threshold.jsp">
+			<forward
+				name="list"
+				path="/invoice/list_invoice_threshold.jsp"/>
+			<forward
+				name="done"
+				path="/invoice/action-done.jsp"/>
+			<forward
+				name="detail"
+				path="/invoice/invoice-threshold.jsp"/>
+			<forward
+				name="error"
+				path="/errorPage.do"/>
+		</action>
+		<action
+			path="/cancel">
+			<forward
+				name="success"
+				path="/index.jsp"/>
+		</action>
+		<!--                    -->
+		<!--  Threshold Actions -->
+		<!--                    -->
+    	<action    path="/list-nf-thresholds"
+        	       type="br.com.auster.dware.console.thresholds.ListNFThresholdAction"
+	               scope="request">
+			<forward   	name="success"	path="/thresholds/nfthreshold.jsp"/>
+    	</action>
+
+    	<action    path="/update-nf-thresholds"
+        	       type="br.com.auster.dware.console.thresholds.UpdateNFThresholdAction"
+				   name="updateNFThresholdsForm"
+	               scope="request">
+			<forward   	name="success"	path="/thresholds/action-done.jsp"/>
+    	</action>
+
+		<!--                       -->
+		<!--  OCCThreshold Actions -->
+		<!--                       -->
+    	<action
+    	path="/occthresholds"
+        type="br.com.auster.dware.console.occThresholds.OCCThresholdAction"
+		name="occForm"
+        parameter="operation"
+	    scope="request">
+			<forward   	name="success"	path="/occThresholds/list-occthreshold.jsp"/>
+			<forward    name="error"    path="/error.jsp"/>
+			<forward    name="detail"    path="/occThresholds/occthreshold.jsp"/>
+			<forward    name="done"    path="/occThresholds/action-done.jsp"/>
+    	</action>
+
+		<!--                         -->
+		<!--  UsageThreshold Actions -->
+		<!--                         -->
+    	<action
+    	path="/usagethresholds"
+        type="br.com.auster.dware.console.usageThresholds.UsageThresholdAction"
+		name="usageForm"
+        parameter="operation"
+	    scope="request">
+			<forward   	name="success"	path="/usageThresholds/list-usage-threshold.jsp"/>
+			<forward    name="error"    path="/error.jsp"/>
+			<forward    name="detail"    path="/usageThresholds/usagethreshold.jsp"/>
+			<forward    name="done"    path="/usageThresholds/action-done.jsp"/>
+    	</action>
+
+	</action-mappings>
+	<message-resources parameter="resources/ApplicationResources"/>
+	<message-resources parameter="br.com.auster.dware.console.message.GeneralMessages"                   		key="general"/>
+	<message-resources parameter="br.com.auster.dware.console.message.login.LoginMessages"               		key="login"/>
+	<message-resources parameter="br.com.auster.dware.console.message.user.UserMessages"                 		key="users"/>
+	<message-resources parameter="br.com.auster.dware.console.message.ExceptionMessages"                		key="exception"/>
+	<message-resources parameter="br.com.auster.dware.console.message.request.RequestMessages"           		key="requests"/>
+	<message-resources parameter="br.com.auster.dware.console.message.queries.QueriesMessages"           		key="queries"/>
+	<message-resources parameter="br.com.auster.dware.console.message.carriers.CarriersMessages"         		key="carriers"/>
+	<message-resources parameter="br.com.auster.dware.console.message.cycleDates.CycleDatesMessages"     		key="cycleDates"/>
+	<message-resources parameter="br.com.auster.dware.console.message.customerType.CustomerTypeMessages" 		key="customerType"/>
+	<message-resources parameter="br.com.auster.dware.console.message.invoice.InvoiceMessages"           		key="invoice"/>
+
+    <message-resources parameter="br.com.auster.dware.console.message.thresholds.ThresholdsMessages"     		key="thresholds"/>
+	<!--  Validator plugin -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property
+			property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml,/WEB-INF/validation-custom.xml"/>
+	</plug-in>
+</struts-config>

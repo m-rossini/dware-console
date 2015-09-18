@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</property>
+		<property name="hibernate.connection.datasource">/billcheckout/portalDB</property>
+		<!-- cycle dates -->
+		<mapping resource="br/com/auster/billcheckout/model/CycleDates.hbm.xml"/>
+		<!-- carriers -->
+		<mapping resource="br/com/auster/billcheckout/consequence/telco/CarrierDimension.hbm.xml"/>
+		<mapping resource="br/com/auster/billcheckout/model/CarrierData.hbm.xml"/>
+		<mapping resource="br/com/auster/billcheckout/consequence/telco/GeographicDimension.hbm.xml"/>
+		<!-- customer Type -->
+		<mapping resource="br/com/auster/billcheckout/thresholds/CustomerType.hbm.xml"/>
+		<!-- thresholds -->
+		<mapping resource="br/com/auster/billcheckout/thresholds/InvoiceThreshold.hbm.xml"/>
+		<mapping resource="br/com/auster/billcheckout/thresholds/NFThreshold.hbm.xml"/>
+		<mapping resource="br/com/auster/billcheckout/thresholds/NFTaxesThreshold.hbm.xml"/>
+		<mapping resource="br/com/auster/billcheckout/thresholds/OCCThreshold.hbm.xml"/>
+		<mapping resource="br/com/auster/billcheckout/thresholds/UsageThreshold.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

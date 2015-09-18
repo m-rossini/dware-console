@@ -1,0 +1,48 @@
+<project xmlns:m="jelly:maven"
+         xmlns:ant="jelly:ant"
+         xmlns:artifact="artifact">
+
+
+
+  <goal name="jar:install" prereqs="build-har">
+    <artifact:install
+              artifact="${maven.build.dir}/${maven.final.name}.har"
+              type="har"
+              project="${pom}"/>
+  </goal>
+
+  <goal name="jar:deploy" prereqs="build-har">
+    <artifact:deploy
+              artifact="${maven.build.dir}/${maven.final.name}.har"
+              type="har"
+              project="${pom}"/>
+  </goal>
+
+  <preGoal name="jar:jar">
+    <attainGoal name="build-har"/>
+  </preGoal>
+
+  <goal name="build-har">
+    <attainGoal name="java:prepare-filesystem"/>
+    <m:forEach var="dep" items="${pom.dependencies}">
+      <!-- looking for HAR source dependencies -->
+      <m:if test="${dep.getProperty('har.src')=='true'}">
+        <!-- unjar dependency file -->
+        <ant:unjar src="${maven.repo.local}/${dep.groupId}/${dep.type}s/${dep.artifactId}-${dep.version}.${dep.type}" 
+                   dest="${maven.build.dir}/${dep.groupId}/${dep.type}s/${dep.artifactId}-${dep.version}"/>
+        <!-- add all hbm.xml files into new jar file -->
+        <ant:jar destfile="${maven.build.dir}/${maven.final.name}.har" update="true">
+          <fileset dir="${maven.build.dir}/${dep.groupId}/${dep.type}s/${dep.artifactId}-${dep.version}"
+	  	   casesensitive="yes">
+  	    <include name="**/*.hbm.xml"/>
+	  </fileset>
+        </ant:jar>
+      </m:if>
+    </m:forEach>
+    <!-- add hibernate service configuration XML -->
+    <ant:jar destfile="${maven.build.dir}/${maven.final.name}.har" update="true">
+      <metainf dir="${basedir}/${har.metainf.dir}"/>
+    </ant:jar>
+  </goal>
+
+</project>

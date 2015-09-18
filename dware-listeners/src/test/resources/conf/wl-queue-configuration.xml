@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<probe jndi.context.factory="weblogic.jndi.WLInitialContextFactory" 
+       jndi.context.url="t3://localhost:7001"
+       jndi.jms.factory="billcheckout.QueueConnectionFactory"
+       jndi.jms.name="queue/procNotification"/>
+

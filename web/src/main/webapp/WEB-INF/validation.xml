@@ -1,0 +1,64 @@
+<!DOCTYPE form-validation PUBLIC
+	"-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+	"http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+<form-validation>
+	<formset>
+		<form name="carrierDataForm">
+			<field property="carrierCode" depends="required, integer, minlength">
+				<arg0 key="csp"/>
+				<msg name="required" key="errors.required" bundle="carriers"/>
+				<msg name="integer"  key="errors.integer" bundle="carriers"/>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>2</var-value>
+				</var>
+				<arg1 key="${var:minlength}" resource="false"/>
+				<msg name="minlength" key="errors.minlength" bundle="carriers"/>
+			</field>
+			<field property="carrierState" depends="required, minlength">
+				<arg0 key="state"/>
+				<msg name="required" key="errors.required" bundle="carriers"/>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>2</var-value>
+				</var>
+				<arg1 key="${var:minlength}" resource="false"/>
+				<msg name="minlength" key="errors.minlength" bundle="carriers"/>
+			</field>
+			<field property="carrierCompany" depends="required">
+				<arg0 key="name.preFix"/>
+				<msg name="required" key="errors.required" bundle="carriers"/>
+			</field>
+		</form>
+		<form name="customerTypeForm">
+			<field property="customerType" depends="required">
+				<arg0 key="code"/>
+				<msg name="required" key="errors.required" bundle="customerType"/>
+			</field>
+		</form>
+		<form name="invoiceForm">
+			<field property="upperAmount" depends="double">
+				<arg0 key="upperAmount"/>
+				<msg name="required" key="errors.double" bundle="invoice"/>
+			</field>
+			<field property="lowerAmount" depends="double">
+				<arg0 key="lowerAmount"/>
+				<msg name="required" key="errors.double" bundle="invoice"/>
+			</field>
+		</form>
+		<form name="changeUserPasswordForm">
+			<field property="login" depends="required">
+				<arg0 key="text.login"/>
+				<msg name="required" key="errors.required" bundle="login"/>
+			</field>
+			<field property="password" depends="required">
+				<arg0 key="text.password"/>
+				<msg name="required" key="errors.required" bundle="login"/>
+			</field>
+			<field property="newPassword" depends="required">
+				<arg0 key="text.newPassword"/>
+				<msg name="required" key="errors.required" bundle="login"/>
+			</field>						
+		</form>		
+	</formset>
+</form-validation>

@@ -1,0 +1,34 @@
+/* Stylesheet*/
+
+
+.login-title {
+ background-color: #A29EDF;
+ font-size: 10pt; 
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ text-align: left;
+ color: #D1D1E9;
+ height:16;
+ font-weight: bold;
+}
+
+.login-central-box {
+ font-size: 9pt; 
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ color: #999;
+ font-weight: bold;
+}
+
+
+.side-background {
+ background-color: #F3FFDC;
+}
+
+.input-label {
+ font-size: 8pt; 
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ text-align: right;
+ color: #7272B8;
+ font-weight: bold;
+}
+
+

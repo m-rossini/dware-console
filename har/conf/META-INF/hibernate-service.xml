@@ -1,0 +1,10 @@
+
+<mbean code="org.jboss.hibernate.jmx.Hibernate" name="jboss.har:service=Hibernate">
+        <attribute name="DatasourceName">java:/facelift/requests/RequestDS</attribute>
+        <attribute name="SessionFactoryName">java:/facelift/requestHBFactory</attribute>
+        <attribute name="Dialect">net.sf.hibernate.dialect.PostgreSQLDialect</attribute>
+        <attribute name="CacheProviderClass">net.sf.hibernate.cache.HashtableCacheProvider</attribute>
+        <attribute name="Hbm2ddlAuto">update</attribute>
+	<attribute name="ShowSqlEnabled">false</attribute>
+</mbean>
+

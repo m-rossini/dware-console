@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<Schema name="Billcheckout" measuresCaption="%{ep.measures.caption}">
+
+  <!--
+  	This are the common dimensions, shared across all cubes defined here.
+  -->
+	<Dimension name="Cycle" caption="%{ep.dim.cycle}">
+	  <Hierarchy hasAll="true" allMemberName="All Cycles" allMemberCaption="%{ep.dim.cycle.all}" primaryKey="objid">
+	    <Table name="bck_cycle_dm_view"/>
+	    <Level name="CycleCode" caption="%{ep.dim.cycle.cycleLevel}" column="cycle_code" uniqueMembers="true"/>
+	    <Level name="CutDate" caption="%{ep.dim.cycle.cutLevel}" column="cut_date" uniqueMembers="true"/>
+	    <Level name="DueDate" caption="%{ep.dim.cycle.dueLevel}" column="due_date" uniqueMembers="true"/>
+	  </Hierarchy>
+	</Dimension>
+	    
+	<Dimension name="MonthlyPeriod" caption="%{ep.dim.monthlyPeriod}">
+	  <Hierarchy hasAll="true" allMemberName="All Periods" allMemberCaption="%{ep.dim.monthlyPeriod.all}" primaryKey="objid">
+	    <Table name="bck_time_dm"/>
+	    <Level name="Year" column="time_year" caption="%{ep.dim.monthlyPeriod.yearLevel}" uniqueMembers="true"/>
+	    <Level name="Month" column="time_month" caption="%{ep.dim.cycle.monthLevel}" uniqueMembers="false"/>
+	  </Hierarchy>
+	</Dimension>
+	
+	<Dimension name="Account" caption="%{ep.dim.account}">
+	  <Hierarchy hasAll="true" allMemberName="All Accounts" allMemberCaption="%{ep.dim.account.all}" primaryKey="objid">
+	    <Table name="bck_account_dm"/>
+	    <Level name="Type" column="account_type" caption="%{ep.dim.account.typeLevel}" uniqueMembers="true"/>
+	    <Level name="Account" column="account_number" caption="%{ep.dim.account.accountLevel}" uniqueMembers="true"/>
+	  </Hierarchy>
+	</Dimension>
+	
+	<Dimension name="Geographic" caption="%{ep.dim.geographic}">
+	  <Hierarchy hasAll="true" allMemberName="All States" allMemberCaption="%{ep.dim.geographic.all}" primaryKey="objid">
+	    <Table name="bck_geo_dm"/>
+	    <Level name="Country" column="geo_country" caption="%{ep.dim.geographic.countryLevel}" uniqueMembers="true"/>
+	    <Level name="Region" column="geo_region" caption="%{ep.dim.geographic.regionLevel}" uniqueMembers="true"/>
+	    <Level name="State" column="geo_state" caption="%{ep.dim.geographic.stateLevel}" uniqueMembers="true"/>
+	  </Hierarchy>
+	</Dimension>
+	
+	<Dimension name="Carrier" caption="%{ep.dim.carrier}">
+	  <Hierarchy hasAll="true" allMemberName="All Carriers" allMemberCaption="%{ep.dim.carrier.all}" primaryKey="objid">
+	    <Table name="bck_carrier_dm"/>
+	    <Level name="Company" column="carrier_name" caption="%{ep.dim.carrier.companyLevel}" uniqueMembers="true"/>
+	    <Level name="Carrier" column="carrier_code" caption="%{ep.dim.carrier.carrierLevel}" uniqueMembers="false"/>
+	    <Level name="State" column="carrier_state" caption="%{ep.dim.carrier.stateLevel}" uniqueMembers="false"/>
+	  </Hierarchy>
+	</Dimension>
+	 
+	<Dimension name="Rule" caption="%{ep.dim.rule}">
+	  <Hierarchy hasAll="true" allMemberName="All Rules" allMemberCaption="%{ep.dim.rule.all}" primaryKey="objid">
+	    <Table name="bck_rule"/>
+	    <Level name="RuleName" column="rule_name" caption="%{ep.dim.rule.nameLevel}" uniqueMembers="true"/>
+	  </Hierarchy>
+	</Dimension>
+
+	  
+
+  <!--
+    Difines the cube where all totals for invoice are stored. 
+  -->
+  <Cube name="InvoiceTotals">
+    <Table name="bck_invoice_fact"/>
+    
+	<DimensionUsage name="Cycle" source="Cycle" foreignKey="cycle_id"/>    
+	<DimensionUsage name="MonthlyPeriod" source="MonthlyPeriod" foreignKey="time_id"/>	
+	<DimensionUsage name="Account" source="Account" foreignKey="account_id"/>	
+	<DimensionUsage name="Geographic" source="Geographic" foreignKey="geo_id"/>    
+	<DimensionUsage name="Carrier" source="Carrier" foreignKey="carrier_id"/>	
+    
+    <Measure name="TotalAmount" caption="%{ep.fact.invoice.totalAmount}" column="total_amount" aggregator="sum"
+		     formatter="br.com.auster.matsya.mondrian.CurrencyFormatter"/>
+    <Measure name="InvoiceCount" caption="%{ep.fact.invoice.invoiceCount}" column="total_amount" aggregator="count"
+		     formatter="br.com.auster.matsya.mondrian.IntegerFormatter"/>
+  </Cube>
+	
+ <Cube name="BillcheckoutConsequences">
+    <Table name="bck_consequence"/>
+
+	<DimensionUsage name="Cycle" source="Cycle" foreignKey="cycle_uid"/>    
+	<DimensionUsage name="MonthlyPeriod" source="MonthlyPeriod" foreignKey="time_uid"/>	
+	<DimensionUsage name="Account" source="Account" foreignKey="account_uid"/>	
+	<DimensionUsage name="Geographic" source="Geographic" foreignKey="geo_uid"/>    
+	<DimensionUsage name="Carrier" source="Carrier" foreignKey="carrier_uid"/>	
+	<DimensionUsage name="Rule" source="Rule" foreignKey="rule_uid"/>	
+    
+    <Measure name="ConsequenceCount" column="transaction_id" caption="%{ep.fact.bck.consequenceCount}" aggregator="count"
+		     formatter="br.com.auster.matsya.mondrian.IntegerFormatter"/>
+  </Cube>
+	
+</Schema>

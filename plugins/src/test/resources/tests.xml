@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<locator xmlns:log4j="http://www.apache.org/log4j/">
+
+        <!--                      -->
+        <!--    log definition    -->
+        <!--                      -->
+        <log-service id="service.log" type="local" class-impl="br.com.auster.facelift.services.log.LogService">
+            <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+            </log4j:configuration>
+        </log-service>
+
+        <!--                      -->
+        <!--  plugin definition   -->
+        <!--                      -->
+        <plugin-service type="local"
+                        class-impl="br.com.auster.facelift.services.plugin.impl.XMLPluginService">
+                        <configuration executor="br.com.auster.facelift.services.plugin.impl.SimplePluginExecutor">                                
+							<plugins/>
+                        </configuration>
+        </plugin-service>
+        <properties-service type="local"
+                            class-impl="br.com.auster.facelift.services.properties.MappedPropertyHandler">
+                <configuration default-realm="default">
+					<realms/>
+				</configuration>
+        </properties-service>
+
+        <!--                      -->
+        <!-- services definition  -->
+        <!--                      -->
+        <services>
+
+			 <service 	id="console.request" type="local"
+                     	class-impl="br.com.auster.facelift.requests.web.hibernate.StandAloneWebRequestHibernateManager">
+                    <configuration>
+						<hibernate file="src/test/hibernate-configuration.xml"/>
+					</configuration>
+            </service>
+<!--
+				<service id="console.request" type="remote"
+                         class-impl="br.com.auster.facelift.requests.web.ejb.WebRequestManagerRemoteHome">
+                        <configuration jndi-name="ejb/facade/WebRequestManagerEJB">
+							<jndi-context>
+								<parameter name="java.naming.factory.initial">org.jnp.interfaces.NamingContextFactory</parameter>
+								<parameter name="java.naming.factory.url.pkgs">jboss.naming:org.jnp.interfaces</parameter>
+								<parameter name="java.naming.provider.url">localhost:1099</parameter>
+							</jndi-context>
+						</configuration>
+                </service>
+-->			
+		</services>
+		
+</locator>

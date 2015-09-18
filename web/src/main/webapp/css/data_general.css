@@ -1,0 +1,93 @@
+/* Stylesheet*/
+
+.sidebar-background {
+ background-color:  #E2F99F;
+}
+
+.side-background {
+ background-color:  #F0F0F0;
+}
+
+.side-firstLine-background {
+ background-color:  #CCCCCC;
+}
+
+.center-firstLine-background {
+ background-color:  #F0F0F0;
+}
+
+.centerbar-background {
+ background-color: #9591D4;
+}
+
+.logoff-text {
+ font-size: 8pt; 
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ color:#666666;
+}
+
+.menu-title {
+ background-color: #A29EDF;
+ font-size: 8pt; 
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ text-align: center;
+ color: #fff;
+ font-weight: bold;
+}
+
+
+.table-title {
+ background-color: #A29EDF;
+ font-size: 8pt; 
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ text-align: center;
+ color: #fff;
+ font-weight: bold;
+}
+
+.table-column-title {
+ background-color: #f0f0f0;
+ font-size: 8pt; 
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-weight: bold;
+ text-align: center;
+ color: #000;	
+}
+
+
+
+A:link    { background: transparent; color: #5E5EB0;
+            text-decoration: none; 
+			font-family: Verdana, Arial, Helvetica, sans-serif;}
+
+A:visited { background: transparent; color: #5E5EB0;
+            text-decoration: none;
+			font-family: Verdana, Arial, Helvetica, sans-serif; }
+A:hover   { background: transparent; color: #9797E2;
+            text-decoration: underline; 
+			font-family: Verdana, Arial, Helvetica, sans-serif;}
+			
+
+.textBlue { 
+ font-size: 8pt;
+ font-weight: bold; 
+ font-family: Verdana, Arial, Helvetica, sans-serif;	
+ color: #5E5EB0;
+}				
+
+.even-row {
+  background-color: #f0f0f0;
+}
+
+.odd-row {
+  background-color: #ffffff;
+}
+
+.color3 {
+  color: black;
+}
+
+.color4 {
+  color: red;
+}
+
